@@ -102,21 +102,27 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */
 
-function macSonucu(callback, ceyrek) {
-  let toplam1 = 0;
-  let toplam2 = 0;
+function macSonucu(takimSkoru, ceyrekSayisi) {
+  let evSahibiSkoru = 0;
+  let konukTakimSkoru = 0;
 
-  for (let i = 0; i <= ceyrek; ++i) {
-    toplam1 += takimSkoru();
-    toplam2 += takimSkoru();
+  for (let i = 1; i <= ceyrekSayisi; i++) {
+    let evSahibiCeyrekSkoru = takimSkoru();
+    let konukTakimCeyrekSkoru = takimSkoru();
 
-    return {
-      EvSahibi: toplam1,
-      KonukTakim: toplam2,
-    };
+    evSahibiSkoru += evSahibiCeyrekSkoru;
+    konukTakimSkoru += konukTakimCeyrekSkoru;
   }
+
+  let macSonucu = {
+    EvSahibi: evSahibiSkoru,
+    KonukTakim: konukTakimSkoru,
+  };
+
+  return macSonucu;
 }
-console.log("Görev 3", macSonucu(takimSkoru(), 4));
+let sonuc = macSonucu(takimSkoru, 4);
+console.log("Görev 3", sonuc);
 
 /* Zorlayıcı Görev 4: periyotSkoru()
 Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
@@ -131,19 +137,20 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
 }
   */
 
-function periyotSkoru(callback) {
-  let toplam1 = 0;
-  let toplam2 = 0;
+function periyotSkoru(takimSkoru) {
+  let evSahibiSkoru = takimSkoru();
+  let konukTakimSkoru = takimSkoru();
 
-  toplam1 = takimSkoru();
-  toplam2 = takimSkoru();
-  return {
-    EvSahibi: toplam1,
-    KonukTakim: toplam2,
+  let skor = {
+    EvSahibi: evSahibiSkoru,
+    KonukTakim: konukTakimSkoru,
   };
+
+  return skor;
 }
 
-console.log("Görev 4", periyotSkoru());
+let sonuc1 = periyotSkoru(takimSkoru);
+console.log("Görev 4", sonuc1);
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
 Aşağıdaki skorTabelasi() fonksiyonunu kullanarak aşağıdakileri yapınız:
