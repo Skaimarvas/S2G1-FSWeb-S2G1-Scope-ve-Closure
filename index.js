@@ -85,9 +85,7 @@ function takimSkoru() {
   return Math.floor(Math.random() * 16) + 10;
 }
 
-let callback = takimSkoru();
-
-console.log("Görev 2", callback);
+console.log("Görev 2", takimSkoru());
 
 /* Görev 3: macSonucu() 
 Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
@@ -104,9 +102,21 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */
 
-function macSonucu() {}
+function macSonucu(callback, ceyrek) {
+  let toplam1 = 0;
+  let toplam2 = 0;
 
-console.log("Görev 3", macSonucu());
+  for (let i = 0; i <= ceyrek; ++i) {
+    toplam1 += takimSkoru();
+    toplam2 += takimSkoru();
+
+    return {
+      EvSahibi: toplam1,
+      KonukTakim: toplam2,
+    };
+  }
+}
+console.log("Görev 3", macSonucu(takimSkoru(), 4));
 
 /* Zorlayıcı Görev 4: periyotSkoru()
 Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
@@ -121,9 +131,19 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
 }
   */
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+function periyotSkoru(callback) {
+  let toplam1 = 0;
+  let toplam2 = 0;
+
+  toplam1 = takimSkoru();
+  toplam2 = takimSkoru();
+  return {
+    EvSahibi: toplam1,
+    KonukTakim: toplam2,
+  };
 }
+
+console.log("Görev 4", periyotSkoru());
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
 Aşağıdaki skorTabelasi() fonksiyonunu kullanarak aşağıdakileri yapınız:
