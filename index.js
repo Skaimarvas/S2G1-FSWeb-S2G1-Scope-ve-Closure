@@ -183,9 +183,59 @@ MAÇ UZAR ise skorTabelasi(periyotSkoru,takimSkoru,4)
 ] */
 // NOTE: Bununla ilgili bir test yoktur. Eğer logladığınız sonuçlar yukarıdakine benziyor ise tmamlandı sayabilirsiniz.
 
-function skorTabelasi(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+let ceyreksonu = takimSkoru();
+
+function skorTabelasi(periyotSkoru, takimSkoru, ceyreks) {
+  let skorlar = [];
+  let evSahibiSkoru = 0;
+  let konukTakimSkoru = 0;
+
+  for (let i = 0; i <= ceyreks; i++) {
+    let periyotSonucu = periyotSkoru(takimSkoru);
+    evSahibiSkoru += periyotSonucu.EvSahibi;
+    konukTakimSkoru += periyotSonucu.KonukTakim;
+
+    let periyotSkoruString =
+      i +
+      ". Periyot: Ev Sahibi " +
+      periyotSonucu.EvSahibi +
+      " - Konuk Takım " +
+      periyotSonucu.KonukTakim;
+    skorlar.push(periyotSkoruString);
+  }
+
+  if (evSahibiSkoru === konukTakimSkoru) {
+    let uzatmaSkorlari = [];
+    let uzatmaNumarasi = 1;
+
+    while (evSahibiSkoru === konukTakimSkoru) {
+      let uzatmaSonucu = periyotSkoru(takimSkoru);
+      evSahibiSkoru += uzatmaSonucu.EvSahibi;
+      konukTakimSkoru += uzatmaSonucu.KonukTakim;
+
+      let uzatmaSkoruString =
+        uzatmaNumarasi +
+        ". Uzatma: Ev Sahibi " +
+        uzatmaSonucu.EvSahibi +
+        " - Konuk Takım " +
+        uzatmaSonucu.KonukTakim;
+      uzatmaSkorlari.push(uzatmaSkoruString);
+
+      uzatmaNumarasi++;
+    }
+
+    skorlar = skorlar.concat(uzatmaSkorlari);
+  }
+  let macSonucuString =
+    "Maç Sonucu: Ev Sahibi " +
+    evSahibiSkoru +
+    " - Konuk Takım " +
+    konukTakimSkoru;
+  skorlar.push(macSonucuString);
+  return skorlar;
 }
+
+console.log(skorTabelasi(periyotSkoru, takimSkoru, 4));
 
 /* Aşağıdaki satırları lütfen değiştirmeyiniz*/
 function sa() {
